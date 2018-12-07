@@ -15,6 +15,15 @@ const typeDefs = gql`
     summary: String
     company: String
     link: String
+    location: Location
+  }
+
+  type Location {
+      location: String
+      city: String
+      area: String
+      postcode: String
+      country: String
   }
 `;
 
