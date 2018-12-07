@@ -5,7 +5,7 @@ const _ = require('lodash');
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
   type Query {
-    vacancies(title: String!): [Vacancy]
+    vacancies(keyword: String!): [Vacancy]
     vacancy(id: String!): [Vacancy!]!
   }
 
@@ -48,7 +48,7 @@ class LmiAPI extends RESTDataSource {
 const resolvers = {
     Query: {
         vacancy: async (_source, { id }, { dataSources }) => dataSources.lmiAPI.getVacancy(id),
-        vacancies: async (_source, _args, { dataSources }) => dataSources.lmiAPI.vacancies(args)
+        vacancies: async (_source, { keyword }, { dataSources }) => dataSources.lmiAPI.vacancies(keyword)
     }
 }
 
